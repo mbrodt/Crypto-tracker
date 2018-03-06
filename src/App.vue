@@ -2,20 +2,24 @@
   <div id="app">
     <h1>Amazing Crypto Joe</h1>
     <!-- <modal></modal> -->
-    <modal v-if="showCoinModal" @close="showCoinModal = false" ></modal>
-    <button @click="showCoinModal = true" >Show modal</button>
+    <converter v-bind:coins="coins"></converter>
+    <modal v-bind:activeCoin="activeCoin" v-if="showCoinModal" @close="closeCoinModal">
+    </modal>
+    <!-- <dropdown v-if="showDropdown" @close="closeDropdown"></dropdown> -->
     <livesearch v-bind:coins="coins"></livesearch>
-  <Coinlist v-bind:coins="coins"></Coinlist>
-  </div> 
+    <Coinlist v-bind:coins="coins"></Coinlist>
+  </div>
 </template>
 
 <script>
 import Coinlist from "./components/CoinList.vue";
 import Modal from "./components/Modal.vue";
 import Livesearch from "./components/Livesearch.vue";
+import Dropdown from "./components/Dropdown.vue";
+import Converter from "./components/Converter.vue";
 export default {
   name: "app",
-  components: { Coinlist, Modal, Livesearch },
+  components: { Coinlist, Modal, Livesearch, Dropdown, Converter },
   data() {
     return {
       coins: [
@@ -40,7 +44,9 @@ export default {
           price_usd: "5"
         }
       ],
-      showCoinModal: false
+      showCoinModal: false,
+      showDropdown: true,
+      activeCoin: ""
     };
   },
   created() {
@@ -49,27 +55,26 @@ export default {
     fetch(url)
       .then(response => {
         response.json().then(data => {
-          console.log(data);
           this.coins = data;
         });
       })
       .catch(function(err) {
         console.log("Fetch Error :-S", err);
       });
+
     this.$root.$on("coinclick", data => {
-      console.log("hey");
-      // console.log(data);
+      console.log("coin: ", data);
+      this.activeCoin = data;
+      this.showCoinModal = true;
     });
   },
   methods: {
-    updateModal() {
-      alert("heard");
-    }
-  },
-  computed: {
-    euro_prices: function() {
-      const euro_prices = this.coins.map(x => (x.price_usd * 0.83).toFixed(3));
-      return euro_prices;
+    closeCoinModal() {
+      this.showCoinModal = false;
+      this.activeCoin = "";
+    },
+    closeDropdown() {
+      this.showDropdown = false;
     }
   }
 };
@@ -85,7 +90,12 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #34323a;
+
   margin-top: 60px;
+}
+
+h1 {
+  font-size: 50px;
 }
 </style>
