@@ -1,0 +1,3 @@
+1. Properly handle how to display USD as option in dropdown
+2. Close modal by ESC or clicking out
+4. Styling

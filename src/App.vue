@@ -3,6 +3,7 @@
     <h1>Amazing Crypto Joe</h1>
     <!-- <modal></modal> -->
     <converter v-bind:coins="coins"></converter>
+    <!-- TODO: make USD in dropdown a better / working solution -->
     <modal v-bind:activeCoin="activeCoin" v-if="showCoinModal" @close="closeCoinModal">
     </modal>
     <!-- <dropdown v-if="showDropdown" @close="closeDropdown"></dropdown> -->
