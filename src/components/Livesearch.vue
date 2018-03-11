@@ -33,6 +33,8 @@ export default {
 </script>
 
 <style>
-
+.field {
+  /* width: 100%; */
+}
 </style>
 

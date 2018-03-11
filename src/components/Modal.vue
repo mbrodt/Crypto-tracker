@@ -56,10 +56,11 @@ export default {
   grid-gap: 10px;
 }
 .modal-card-title {
-  color: #34323a;
+  color: rgb(253, 243, 243);
 }
 .modal-card-head {
-  background-image: linear-gradient(135deg, #43cbff 10%, #9708cc 100%);
+  background-color: #e76c67;
+  /* background-image: linear-gradient(135deg, #43cbff 10%, #9708cc 100%); */
 }
 
 .modal-card-body {

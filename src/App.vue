@@ -2,12 +2,20 @@
   <div id="app">
     <h1>Amazing Crypto Joe</h1>
     <!-- <modal></modal> -->
+    <div class="flexcontainer">
+      <div class="item1">
+
+    <livesearch v-bind:coins="coins"></livesearch>
+      </div>
+      <div class="item1">
     <converter v-bind:coins="coins"></converter>
+
+      </div>
+    </div>
     <!-- TODO: make USD in dropdown a better / working solution -->
     <modal v-bind:activeCoin="activeCoin" v-if="showCoinModal" @close="closeCoinModal">
     </modal>
     <!-- <dropdown v-if="showDropdown" @close="closeDropdown"></dropdown> -->
-    <livesearch v-bind:coins="coins"></livesearch>
     <Coinlist v-bind:coins="coins"></Coinlist>
   </div>
 </template>
@@ -51,7 +59,7 @@ export default {
     };
   },
   created() {
-    let numOfCoinsToFetch = 10;
+    let numOfCoinsToFetch = 14;
     const url = `https://api.coinmarketcap.com/v1/ticker/?limit=${numOfCoinsToFetch}`;
     fetch(url)
       .then(response => {
@@ -92,8 +100,17 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #34323a;
+  max-width: 1280px;
+  margin: 50px auto;
+}
 
-  margin-top: 60px;
+.flexcontainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.item1 {
+  flex: 1 1 50%;
 }
 
 h1 {

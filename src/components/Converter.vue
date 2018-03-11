@@ -1,19 +1,23 @@
 <template>
     <div>
-        <input v-model="amountFrom" type="text" placeholder="Amount to convert">
+      <div class="my-test">
+        <input class="my-input" v-model="amountFrom" type="text" placeholder="Amount to convert">
         <!-- <p>{{amountFrom}}</p> -->
         <select v-model="currencyFrom">
             <option v-for="currency in coins" v-bind:value="currency" :key="currency.id">
                 {{currency.name}} ({{currency.symbol}})
             </option>
         </select>
-        <input v-model="amountTo" type="text" placeholder="Converted to">
+              </div>
+              <div>
+        <input class="my-input" v-model="amountTo" type="text" placeholder="Converted to">
         <select v-model="currencyTo">
             <!-- <option value="USD">US Dollars (USD)</option> -->
             <option v-for="currency in coins" v-bind:value="currency" :key="currency.id">
                 {{currency.name}} ({{currency.symbol}})
             </option>
         </select>
+        </div>
         <!-- <input v-model="amountTo" type="text" placeholder="Amount to convert">
         <select>
             <option value="BTC">BTC</option>
@@ -62,5 +66,40 @@ export default {
 </script>
 
 <style>
-
+.my-test {
+  display: inline;
+}
+.my-input {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  font-size: 1rem;
+  height: 2.25em;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  line-height: 1.5;
+  padding-bottom: calc(0.375em - 1px);
+  padding-left: calc(0.625em - 1px);
+  padding-right: calc(0.625em - 1px);
+  padding-top: calc(0.375em - 1px);
+  position: relative;
+  vertical-align: top;
+  background-color: white;
+  border-color: #dbdbdb;
+  color: #363636;
+  -webkit-box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
+  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
+  max-width: 100%;
+  width: 100px;
+}
 </style>

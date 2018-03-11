@@ -1,11 +1,19 @@
 <template>
 <div class="box boxtext"  @click="sendCoinEvent">
-    <p>{{coin.name}}
+    <!-- <p>{{coin.name}}
       <br>
        {{coin.price_usd}}$
        <br>
         {{price_euro}}€
-        </p>
+        </p> -->
+        <h4>{{coin.name}}</h4>
+        <div class="prices">
+          <p>{{coin.price_usd}}$</p>
+          <p>{{price_euro}}€</p>
+        </div>
+
+        <button class="my-button">More Info</button>
+
 </div>
   
 </template>
@@ -34,20 +42,53 @@ export default {
 .box {
   /* background: #c3e8c3; */
   /* padding: 10px; */
-  background-image: linear-gradient(135deg, #43cbff 10%, #9708cc 100%);
-  height: auto;
+  /* background-image: linear-gradient(135deg, #43cbff 10%, #9708cc 100%); */
   border: 1px solid #000000;
-  margin-bottom: 1em;
   border-radius: 10px;
 }
-.box:hover {
+/* .box:hover {
   transform: translateY(-3px);
   box-shadow: 3px 3px #b8b8b8;
-}
+} */
 .boxtext {
-  color: #34323a;
+  color: #444444;
   text-align: center;
   font-size: 30px;
-  /* max-width: 300px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.boxtext span {
+  color: #666666;
+}
+
+h4 {
+  font-weight: bold;
+  color: #444444;
+}
+
+.prices {
+  margin: 1rem;
+}
+
+.my-button {
+  display: block;
+  font-size: 1rem;
+  background: #e76c67;
+  border: 1px solid #e76c67;
+  padding: 0.75rem 1rem;
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+  text-align: center;
+}
+
+.my-button:hover,
+.my-button:focus {
+  transform: translateY(-1px);
+  background: #b95652;
+  border: 1px solid #b95652;
 }
 </style>
