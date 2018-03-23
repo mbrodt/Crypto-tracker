@@ -3,14 +3,8 @@
     <h1>Amazing Crypto Joe</h1>
     <!-- <modal></modal> -->
     <div class="flexcontainer">
-      <div class="item1">
-
-    <livesearch v-bind:coins="coins"></livesearch>
-      </div>
-      <div class="item1">
-    <converter v-bind:coins="coins"></converter>
-
-      </div>
+      <converter v-bind:coins="coins"></converter>
+      <livesearch v-bind:coins="coins"></livesearch>
     </div>
     <!-- TODO: make USD in dropdown a better / working solution -->
     <modal v-bind:activeCoin="activeCoin" v-if="showCoinModal" @close="closeCoinModal">
@@ -107,10 +101,12 @@ export default {
 .flexcontainer {
   display: flex;
   justify-content: space-between;
+  margin: 20px;
 }
 
 .item1 {
   flex: 1 1 50%;
+  display: flex;
 }
 
 h1 {

@@ -1,24 +1,25 @@
 <template>
+  <div class="my-test">
     <div>
-      <div class="my-test">
-        <input class="my-input" v-model="amountFrom" type="text" placeholder="Amount to convert">
-        <!-- <p>{{amountFrom}}</p> -->
-        <select v-model="currencyFrom">
-            <option v-for="currency in coins" v-bind:value="currency" :key="currency.id">
-                {{currency.name}} ({{currency.symbol}})
-            </option>
-        </select>
-              </div>
-              <div>
-        <input class="my-input" v-model="amountTo" type="text" placeholder="Converted to">
-        <select v-model="currencyTo">
-            <!-- <option value="USD">US Dollars (USD)</option> -->
-            <option v-for="currency in coins" v-bind:value="currency" :key="currency.id">
-                {{currency.name}} ({{currency.symbol}})
-            </option>
-        </select>
-        </div>
-        <!-- <input v-model="amountTo" type="text" placeholder="Amount to convert">
+      <input class="my-input" v-model="amountFrom" type="text" placeholder="Amount to convert">
+      <!-- <p>{{amountFrom}}</p> -->
+      <select v-model="currencyFrom">
+        <option value="" selected disabled hidden>Choose here</option>
+        <option v-for="currency in coins" v-bind:value="currency" :key="currency.id">
+          {{currency.name}} ({{currency.symbol}})
+        </option>
+      </select>
+    </div>
+    <div>
+      <input class="my-input" v-model="amountTo" type="text" placeholder="Converted to">
+      <select v-model="currencyTo">
+        <!-- <option value="USD">US Dollars (USD)</option> -->
+        <option v-for="currency in coins" v-bind:value="currency" :key="currency.id">
+          {{currency.name}} ({{currency.symbol}})
+        </option>
+      </select>
+    </div>
+    <!-- <input v-model="amountTo" type="text" placeholder="Amount to convert">
         <select>
             <option value="BTC">BTC</option>
             <option value="ETH">ETH</option>
@@ -26,7 +27,7 @@
             <option value="USD">USD</option>
             <option value="EURO">EURO</option>
         </select> -->
-    </div>
+  </div>
 </template>
 
 <script>
@@ -36,6 +37,7 @@ export default {
     return {
       //   selectedOption: "",
       amountFrom: 0,
+      // amountTo: 0,
       //   amountTo: 0,
       currencyFrom: {},
       currencyTo: {}
@@ -46,6 +48,7 @@ export default {
       console.log(
         "From: " + this.currencyFrom.name + " To: " + this.currencyTo.name
       );
+
       return (
         this.amountFrom *
         this.currencyFrom.price_usd /
@@ -67,7 +70,8 @@ export default {
 
 <style>
 .my-test {
-  display: inline;
+  display: flex;
+  flex-wrap: wrap;
 }
 .my-input {
   -moz-appearance: none;
@@ -101,5 +105,10 @@ export default {
   box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
   max-width: 100%;
   width: 100px;
+}
+
+select {
+  height: 100%;
+  max-width: 140px;
 }
 </style>
