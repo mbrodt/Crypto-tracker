@@ -2,7 +2,7 @@
   <div id="app">
     <h1>Amazing Crypto Joe</h1>
     <!-- <modal></modal> -->
-    <div class="flexcontainer">
+    <!-- <div class="flexcontainer">
       <div class="item1">
 
     <livesearch v-bind:coins="coins"></livesearch>
@@ -11,7 +11,7 @@
     <converter v-bind:coins="coins"></converter>
 
       </div>
-    </div>
+    </div> -->
     <!-- TODO: make USD in dropdown a better / working solution -->
     <modal v-bind:activeCoin="activeCoin" v-if="showCoinModal" @close="closeCoinModal">
     </modal>

@@ -1,13 +1,13 @@
 <template>
 <div class="modal is-active">
-  <div class="modal-background"></div>
+  <div class="modal-background" @click="close()"></div>
   <div class="modal-card">
     <header class="modal-card-head">
       <p class="modal-card-title">
         <!-- <slot name="header"></slot> -->
         {{ activeCoin.name }} ({{activeCoin.symbol}})
       </p>
-      <button class="delete" aria-label="close" @click="$emit('close')"></button>
+      <button class="delete" aria-label="close" @click="close()"></button>
     </header>
     <section class="modal-card-body">
       <!-- Content ... -->
@@ -45,7 +45,12 @@ export default {
       coinData: this.activeCoin
     };
   },
-  created() {}
+  created() {},
+  methods: {
+    close() {
+      this.$emit("close");
+    }
+  }
 };
 </script>
 

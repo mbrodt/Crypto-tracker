@@ -8,8 +8,8 @@
         </p> -->
         <h4>{{coin.name}}</h4>
         <div class="prices">
-          <p>{{coin.price_usd}}$</p>
-          <p>{{price_euro}}€</p>
+          <p>{{coin.price_usd | currencydecimal}}$</p>
+          <p>{{price_euro | currencydecimal}}€</p>
         </div>
 
         <button class="my-button">More Info</button>
@@ -32,7 +32,12 @@ export default {
   computed: {
     price_euro: function() {
       //todo pull in real conversion rate
-      return (this.coin.price_usd * 0.83).toFixed(3);
+      return this.coin.price_usd * 0.83; //.toFixed(3);
+    }
+  },
+  filters: {
+    currencydecimal(value) {
+      return parseFloat(value).toFixed(3);
     }
   }
 };

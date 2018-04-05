@@ -28,9 +28,7 @@ export default {
 .grid-wrapper {
   list-style-type: none;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 50px;
-  justify-content: start;
-  align-content: start;
 }
 </style>
